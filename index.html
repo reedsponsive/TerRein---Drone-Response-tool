@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Worry to plan</title>
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<h1>Worry to plan</h1>
+<p class="sub">Say what you are worried about, mark the area on the map, and get a drone survey plan.</p>
+<p class="banner">Findings in reports are simulated. No drone flies and no images are analysed, so the report shows only what a finished one would look like. This page runs entirely in your browser and sends nothing anywhere.</p>
+<div class="grid">
+<div>
+<canvas id="cv" width="640" height="640" aria-label="Area drawing map. Click to add points."></canvas>
+<p class="hint" id="hint"></p>
+<div class="row"><button id="undo">Undo point</button><button id="clear">Clear area</button><button id="ex">Load example</button></div>
+</div>
+<div>
+<label for="worry">Your concern, in plain words</label>
+<textarea id="worry" placeholder="For example: I think the slope above our village is moving after the rains"></textarea>
+<div class="row">
+<div class="f"><label for="lat">Centre latitude</label><input id="lat" value="-6.1225"></div>
+<div class="f"><label for="lon">Centre longitude</label><input id="lon" value="39.303"></div>
+<div class="f"><label for="wid">Map width (m)</label><input id="wid" type="number" min="100" max="5000" step="100" value="1000"></div>
+</div>
+<div class="row">
+<div class="f"><label for="pack">Scenario</label><select id="pack"><option value="">Choose for me</option></select></div>
+<div class="f"><label for="alt">Altitude in m (optional)</label><input id="alt" type="number" min="30" max="120" placeholder="auto"></div>
+</div>
+<label style="display:flex;gap:8px;align-items:center;color:var(--ink)"><input type="checkbox" id="demo" checked style="width:auto"> Include a sample report with simulated findings</label>
+<div class="row"><button class="main" id="go">Plan survey</button></div>
+<div class="err" id="err" role="alert"></div><div id="ask"></div>
+</div></div>
+<div id="out" hidden>
+<h2 id="ot" style="font:600 26px Georgia,serif;margin:0 0 4px"></h2>
+<p class="note" id="os"></p><dl id="nums"></dl>
+<p class="note">Aviation rules differ by country. Check yours before flying, and keep the drone in sight unless you hold approval.</p>
+<div class="row"><button id="cp" hidden>Copy report</button><span class="note" id="cpm"></span></div>
+<div class="rep" id="rep"></div>
+</div></div>
+<script src="app.js"></script></body></html>
